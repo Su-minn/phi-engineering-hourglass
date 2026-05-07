@@ -80,34 +80,61 @@ header h1 {
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: var(--ink-soft);
+  background: var(--ink);
   transition: background 0.22s var(--ease);
 }
 
-.status-running .status-dot {
+/* STILL — 정지 상태 (단색, 정적) */
+.status-still {
+  color: var(--ink);
+}
+
+.status-still .status-dot {
+  background: var(--ink);
+}
+
+/* FLOWING — 흐름 상태 (accent, 펄스) */
+.status-flowing {
+  color: var(--accent);
+}
+
+.status-flowing .status-dot {
   background: var(--accent);
   animation: dot-pulse 1.2s var(--ease) infinite;
 }
 
-.status-running {
-  color: var(--accent);
-}
-
-.status-done .status-dot {
-  background: var(--ink);
-}
-
 @keyframes dot-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
 }
 
-/* ━━━━━━━━━━━ Bars (수평 듀얼 막대) ━━━━━━━━━━━ */
+/* ━━━━━━━━━━━ Bars (수평 듀얼 막대 + 회전) ━━━━━━━━━━━ */
 .bars {
   margin: 36px 0 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.bars.flipping {
+  animation: flip-x 0.6s var(--ease);
+}
+
+/* 모래시계의 물리적 반전 — 가로축(X) 회전 */
+@keyframes flip-x {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
 }
 
 .bar-row {
@@ -115,6 +142,7 @@ header h1 {
   grid-template-columns: 60px 1fr 48px;
   align-items: center;
   gap: 16px;
+  backface-visibility: hidden;
 }
 
 .bar-label {
@@ -151,7 +179,7 @@ header h1 {
 
 /* ━━━━━━━━━━━ Progress ━━━━━━━━━━━ */
 .progress {
-  margin: 64px 0 56px;
+  margin: 56px 0 32px;
   text-align: center;
 }
 
@@ -184,6 +212,31 @@ header h1 {
   margin-left: 6px;
   color: var(--ink-soft);
   letter-spacing: -0.02em;
+}
+
+/* ━━━━━━━━━━━ Cycle Counter ━━━━━━━━━━━ */
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 0 36px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cycle-label {
+  color: var(--ink-faint);
+}
+
+.cycle-value {
+  color: var(--ink);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ━━━━━━━━━━━ Button ━━━━━━━━━━━ */
