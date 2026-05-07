@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  margin: 0 0 6px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 12px;
+  opacity: 0.55;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.state-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  letter-spacing: 0.02em;
+  transition: all 0.3s ease;
+}
+
+.state-idle {
+  background: rgba(138, 155, 255, 0.15);
+  color: #8a9bff;
+  border: 1px solid rgba(138, 155, 255, 0.3);
+}
+
+.state-running {
+  background: rgba(110, 231, 183, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.state-done {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(0.98);
+  }
+}
+
+.hourglass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 24px auto;
+}
+
+.container {
+  width: 240px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+}
+
+.container.start {
+  border-radius: 14px 14px 4px 4px;
+}
+
+.container.end {
+  border-radius: 4px 4px 14px 14px;
+}
+
+.container-label {
+  font-size: 11px;
+  opacity: 0.5;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bar-wrap {
+  height: 80px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.start .bar {
+  width: 100%;
+  background: linear-gradient(180deg, #8a9bff 0%, #6b7fee 100%);
+  transition: height 100ms linear;
+}
+
+.end .bar {
+  width: 100%;
+  background: linear-gradient(180deg, #6ee7b7 0%, #34d399 100%);
+  transition: height 100ms linear;
+}
+
+.amount {
+  margin-top: 8px;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+.neck {
+  width: 4px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.progress {
+  margin: 28px 0 24px;
+}
+
+.progress-label {
+  font-size: 11px;
+  opacity: 0.5;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.progress-value {
+  font-size: 32px;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.trigger-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #4f46e5;
+  color: white;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.trigger-btn:hover:not(:disabled) {
+  background: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+}
+
+.trigger-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.trigger-btn:disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+}
+
+footer {
+  margin-top: 36px;
+  text-align: left;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+footer summary {
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 0;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+footer ul {
+  padding-left: 20px;
+  line-height: 1.85;
+  margin: 8px 0 0;
+}
