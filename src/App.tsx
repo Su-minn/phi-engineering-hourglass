@@ -12,7 +12,6 @@ const FLIP_DURATION_MS = 600
 function App() {
   const [state, setState] = useState<State>('STILL')
   const [startAmount, setStartAmount] = useState<number>(TOTAL)
-  const [cycleCount, setCycleCount] = useState<number>(0)
   const [isFlipping, setIsFlipping] = useState<boolean>(false)
 
   // 추상화 3 — 양 보존: 도착량은 시작량에서 derive (시작 + 도착 = TOTAL)
@@ -41,8 +40,7 @@ function App() {
     if (state !== 'STILL') return // 추상화 4 — 흐름 중 차단
 
     setIsFlipping(true)
-    setCycleCount((c) => c + 1)
-    setStartAmount(TOTAL) // 양 swap (새 사이클)
+    setStartAmount(TOTAL) // 양 swap (새 사이클, 추상화 5 멱등 반복)
     setState('FLOWING')
 
     setTimeout(() => setIsFlipping(false), FLIP_DURATION_MS)
@@ -103,11 +101,6 @@ function App() {
           {(progress * 100).toFixed(0)}
           <span className="progress-unit">%</span>
         </p>
-      </section>
-
-      <section className="meta-row" aria-label="cycle count">
-        <span className="cycle-label">CYCLE</span>
-        <span className="cycle-value">{cycleCount.toString().padStart(2, '0')}</span>
       </section>
 
       <button

@@ -179,7 +179,7 @@ header h1 {
 
 /* ━━━━━━━━━━━ Progress ━━━━━━━━━━━ */
 .progress {
-  margin: 56px 0 32px;
+  margin: 56px 0 56px;
   text-align: center;
 }
 
@@ -212,31 +212,6 @@ header h1 {
   margin-left: 6px;
   color: var(--ink-soft);
   letter-spacing: -0.02em;
-}
-
-/* ━━━━━━━━━━━ Cycle Counter ━━━━━━━━━━━ */
-.meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 0 0 36px;
-  padding: 12px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.cycle-label {
-  color: var(--ink-faint);
-}
-
-.cycle-value {
-  color: var(--ink);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
 }
 
 /* ━━━━━━━━━━━ Button ━━━━━━━━━━━ */
